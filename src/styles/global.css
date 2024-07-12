@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary: #9e78cf;
+  --secondary: #78cfb0;
+  --danger: #ff3e3e;
+  --bg-color: #0d0714;
+  --dark: #15101c;
+  --grey: #777777;
+  --title-color: #e7e6e6;
+  --text-color: #c3c3c3;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--title-color);
+}
+.task-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.task-item.completed {
+  color: red;
+}
+
+.task-item button {
+  margin-right: 5px;
+}
