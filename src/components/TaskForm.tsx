@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { addTask } from "../redux/slice/slice";
 import { Modal, Button, Form, Input, DatePicker } from "antd";
 import moment from "moment";
-import "./../styles/global.css";
 import { PlusOutlined } from "@ant-design/icons";
 
 const TaskForm: React.FC<{ visible: boolean; onClose: () => void }> = ({
@@ -18,28 +17,30 @@ const TaskForm: React.FC<{ visible: boolean; onClose: () => void }> = ({
     initialValues: {
       title: "",
       description: "",
-      deadline: undefined as Date | undefined
+      deadline: null as Date | null
     },
     validationSchema: Yup.object({
       title: Yup.string().required("Title is required"),
       description: Yup.string(),
       deadline: Yup.date()
         .nullable()
-        .transform((value, originalValue) => {
-          return originalValue === "" ? undefined : value;
-        })
+        .transform((value, originalValue) =>
+          originalValue === "" ? null : value
+        )
         .typeError("Invalid date")
     }),
     onSubmit: (values) => {
       const formattedDeadline = values.deadline
-        ? moment(values.deadline).format("YYYY-MM-DD")
+        ? moment(values.deadline).format("YYYY-MM-DD HH:mm")
         : undefined;
-      const taskValues = {
-        ...values,
-        deadline: formattedDeadline
-      };
+
       dispatch(
-        addTask({ ...taskValues, id: Date.now().toString(), status: "pending" })
+        addTask({
+          ...values,
+          deadline: formattedDeadline,
+          id: Date.now().toString(),
+          status: "pending"
+        })
       );
       formik.resetForm();
       onClose();
@@ -92,30 +93,20 @@ const TaskForm: React.FC<{ visible: boolean; onClose: () => void }> = ({
           <DatePicker
             id="deadline"
             name="deadline"
-            onChange={(date, dateString) => {
-              formik.setFieldValue(
-                "deadline",
-                date ? date.toDate() : undefined
-              );
+            onChange={(date) => {
+              formik.setFieldValue("deadline", date ? date.toDate() : null);
             }}
+            showTime
+            format="YYYY-MM-DD HH:mm"
             value={
-              formik.values.deadline
-                ? moment(formik.values.deadline)
-                : undefined
+              formik.values.deadline ? moment(formik.values.deadline) : null
             }
-            format="YYYY-MM-DD"
-            inputReadOnly
-            className="custom-datepicker"
           />
         </Form.Item>
 
-        <Form.Item>
-          <div style={{ textAlign: "right" }}>
-            <Button type="primary" icon={<PlusOutlined />} htmlType="submit">
-              Add Task
-            </Button>
-          </div>
-        </Form.Item>
+        <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
+          Add Task
+        </Button>
       </Form>
     </Modal>
   );

@@ -1,4 +1,3 @@
-// redux/slice/slice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Task {
@@ -58,6 +57,18 @@ const tasksSlice = createSlice({
       if (index !== -1) {
         state.tasks[index].status = "pending";
       }
+    },
+    updateTaskStatuses: (state) => {
+      const now = new Date();
+      state.tasks.forEach((task) => {
+        if (
+          task.deadline &&
+          new Date(task.deadline) < now &&
+          task.status !== "completed"
+        ) {
+          task.status = "overdue";
+        }
+      });
     }
   }
 });
@@ -69,7 +80,8 @@ export const {
   permanentlyRemoveTask,
   restoreTask,
   markTaskAsCompleted,
-  markTaskAsPending
+  markTaskAsPending,
+  updateTaskStatuses
 } = tasksSlice.actions;
 
 export default tasksSlice.reducer;
