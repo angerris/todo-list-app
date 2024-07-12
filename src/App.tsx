@@ -5,6 +5,7 @@ import TaskForm from "./components/TaskForm";
 import Trash from "./components/Trash";
 import CompletedTasks from "./components/CompletedTasks";
 import "./styles/global.css";
+import { PlusOutlined } from "@ant-design/icons";
 
 const { TabPane } = Tabs;
 
@@ -24,13 +25,18 @@ const App: React.FC = () => {
       <div className="mainCard">
         {" "}
         <div className="formHeader">
-          <h1>Todo List</h1>
-          <Button type="primary" onClick={showModal}>
+          <h1 style={{ color: "#434343" }}>Todo List</h1>
+          <Button
+            type="primary"
+            onClick={showModal}
+            size="large"
+            icon={<PlusOutlined />}
+          >
             Add Task
           </Button>
         </div>
         <TaskForm visible={isModalVisible} onClose={handleClose} />
-        <Tabs defaultActiveKey="1">
+        <Tabs className="custom-tabs" defaultActiveKey="1">
           <TabPane tab="Tasks" key="1">
             <TaskList />
           </TabPane>

@@ -1,3 +1,4 @@
+// redux/slice/slice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Task {
@@ -21,7 +22,7 @@ const tasksSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action: PayloadAction<Task>) => {
-      state.tasks.push(action.payload);
+      state.tasks.unshift(action.payload);
     },
     editTask: (state, action: PayloadAction<Task>) => {
       const index = state.tasks.findIndex(

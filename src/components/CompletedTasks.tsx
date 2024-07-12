@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import TaskItem from "./TaskItem";
+import EmptyBox from "./EmptyBox";
 
 const CompletedTasks: React.FC = () => {
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
@@ -11,7 +12,7 @@ const CompletedTasks: React.FC = () => {
   return (
     <div className="tabContent">
       {completedTasks.length === 0 ? (
-        <p>No completed tasks</p>
+        <EmptyBox text="No completed tasks" />
       ) : (
         completedTasks.map((task) => <TaskItem key={task.id} task={task} />)
       )}

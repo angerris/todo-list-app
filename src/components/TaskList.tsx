@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import TaskItem from "./TaskItem";
+import EmptyBox from "./EmptyBox";
 
 const TaskList: React.FC = () => {
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
@@ -11,7 +12,7 @@ const TaskList: React.FC = () => {
   return (
     <div className="tabContent">
       {pendingTasks.length === 0 ? (
-        <p>No pending tasks</p>
+        <EmptyBox text="No pending tasks" />
       ) : (
         pendingTasks.map((task) => <TaskItem key={task.id} task={task} />)
       )}
