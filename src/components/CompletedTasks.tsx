@@ -3,20 +3,20 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import TaskItem from "./TaskItem";
 
-const TaskList: React.FC = () => {
+const CompletedTasks: React.FC = () => {
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
 
-  const pendingTasks = tasks.filter((task) => task.status === "pending");
+  const completedTasks = tasks.filter((task) => task.status === "completed");
 
   return (
     <div className="tabContent">
-      {pendingTasks.length === 0 ? (
-        <p>No pending tasks</p>
+      {completedTasks.length === 0 ? (
+        <p>No completed tasks</p>
       ) : (
-        pendingTasks.map((task) => <TaskItem key={task.id} task={task} />)
+        completedTasks.map((task) => <TaskItem key={task.id} task={task} />)
       )}
     </div>
   );
 };
 
-export default TaskList;
+export default CompletedTasks;

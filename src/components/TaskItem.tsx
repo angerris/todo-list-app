@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Task, removeTask, markTaskAsCompleted } from "./../redux/slice/slice";
+import {
+  Task,
+  removeTask,
+  markTaskAsCompleted,
+  markTaskAsPending
+} from "./../redux/slice/slice";
 import EditTaskForm from "./EditTaskForm";
 
 const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
@@ -13,6 +18,10 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
 
   const handleMarkAsCompleted = () => {
     dispatch(markTaskAsCompleted(task.id));
+  };
+
+  const handleMarkAsPending = () => {
+    dispatch(markTaskAsPending(task.id));
   };
 
   const handleEdit = () => {
@@ -42,7 +51,10 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
             </>
           )}
           {task.status === "completed" && (
-            <button onClick={handleRemove}>Delete</button>
+            <>
+              <button onClick={handleMarkAsPending}>Mark as Uncompleted</button>
+              <button onClick={handleRemove}>Delete</button>
+            </>
           )}
         </>
       )}

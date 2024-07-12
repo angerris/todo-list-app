@@ -16,8 +16,6 @@
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--title-color);
 }
 .task-item {
   border: 1px solid #ccc;
@@ -31,4 +29,28 @@ body {
 
 .task-item button {
   margin-right: 5px;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  flex-direction: column;
+}
+.tabContent {
+  background-color: #85a5ff;
+  height: 60dvh;
+  width: 40dvw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 10px;
+  padding: 10px;
+}
+.formHeader {
+  width: 40dvw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
 }
