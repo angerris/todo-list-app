@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/angerris/todo-list-app/static/css/main.1c103386.css",
+    "main.js": "/angerris/todo-list-app/static/js/main.cbadb04f.js",
+    "index.html": "/angerris/todo-list-app/index.html",
+    "main.1c103386.css.map": "/angerris/todo-list-app/static/css/main.1c103386.css.map",
+    "main.cbadb04f.js.map": "/angerris/todo-list-app/static/js/main.cbadb04f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1c103386.css",
+    "static/js/main.cbadb04f.js"
+  ]
+}
