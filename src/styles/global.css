@@ -178,4 +178,8 @@ body {
   .tabContent {
     width: 95dvw;
   }
+  .ant-picker-dropdown {
+    left: 0 !important;
+    right: 0 !important;
+  }
 }
