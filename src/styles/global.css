@@ -24,6 +24,7 @@ body {
   height: 100dvh;
   flex-direction: column;
 }
+
 .tabContent {
   background-color: #fafafa;
   height: 60dvh;
@@ -36,15 +37,27 @@ body {
   flex-direction: column;
   align-items: center;
 }
+.tabContentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .formHeader {
   width: 40dvw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
 }
-
+.ant-tabs-nav-list {
+  width: 100%;
+}
+.formHeaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 .custom-datepicker .ant-picker-input {
   cursor: pointer;
 }
@@ -68,9 +81,10 @@ body {
 .custom-tabs .ant-tabs-tab {
   font-size: 16px;
   padding: 12px 24px;
+  margin: 0 !important;
 }
 .custom-tabs .ant-tabs-ink-bar {
-  height: 4px;
+  height: 4px !important;
   background-color: #1890ff;
 }
 .task-item {
@@ -147,4 +161,26 @@ body {
   display: flex;
   justify-content: flex-end;
   margin-top: 16px;
+}
+
+@media (max-width: 991px) {
+  .custom-tabs .ant-tabs-tab {
+    padding: 12px 10px;
+  }
+  .formHeader {
+    width: 100%;
+  }
+  .tabContent {
+    width: 80dvw;
+    height: 70dvh;
+  }
+}
+@media (max-width: 600px) {
+  .tabContent {
+    width: 95dvw;
+  }
+  .ant-picker-dropdown {
+    left: 0 !important;
+    right: auto;
+  }
 }

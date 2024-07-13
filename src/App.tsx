@@ -35,17 +35,21 @@ const App: React.FC = () => {
   return (
     <div className="main">
       <div className="mainCard">
-        <div className="formHeader">
-          <h1 style={{ color: "#434343" }}>Todo List</h1>
-          <Button
-            type="primary"
-            onClick={showModal}
-            size="large"
-            icon={<PlusOutlined />}
-          >
-            Add Task
-          </Button>
+        <div className="formHeaderWrapper">
+          {" "}
+          <div className="formHeader">
+            <h1 style={{ color: "#434343" }}>Todo List</h1>
+            <Button
+              type="primary"
+              onClick={showModal}
+              size="large"
+              icon={<PlusOutlined />}
+            >
+              Add Task
+            </Button>
+          </div>
         </div>
+
         <TaskForm visible={isModalVisible} onClose={handleClose} />
         <Tabs className="custom-tabs" defaultActiveKey="1">
           <TabPane tab="Pending" key="1" className="tabContentWrapper">

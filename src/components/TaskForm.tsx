@@ -31,7 +31,7 @@ const TaskForm: React.FC<{ visible: boolean; onClose: () => void }> = ({
     }),
     onSubmit: (values) => {
       const formattedDeadline = values.deadline
-        ? moment(values.deadline).format("YYYY-MM-DD, HH:mm")
+        ? moment(values.deadline).format("YYYY-MM-DD HH:mm")
         : undefined;
 
       dispatch(
@@ -90,18 +90,24 @@ const TaskForm: React.FC<{ visible: boolean; onClose: () => void }> = ({
               : ""
           }
         >
-          <DatePicker
-            id="deadline"
-            name="deadline"
-            onChange={(date) => {
-              formik.setFieldValue("deadline", date ? date.toDate() : null);
-            }}
-            showTime
-            format="YYYY-MM-DD HH:mm"
-            value={
-              formik.values.deadline ? moment(formik.values.deadline) : null
-            }
-          />
+          <div
+            style={{ width: "100%", overflow: "hidden", textAlign: "center" }}
+          >
+            <DatePicker
+              id="deadline"
+              name="deadline"
+              onChange={(date) => {
+                formik.setFieldValue("deadline", date ? date.toDate() : null);
+              }}
+              showTime
+              format="YYYY-MM-DD HH:mm"
+              style={{ width: "100%" }}
+              popupAlign={{ points: ["bl", "tl"] }}
+              value={
+                formik.values.deadline ? moment(formik.values.deadline) : null
+              }
+            />
+          </div>
         </Form.Item>
 
         <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
