@@ -106,6 +106,7 @@ const TaskForm: React.FC<{ visible: boolean; onClose: () => void }> = ({
               value={
                 formik.values.deadline ? moment(formik.values.deadline) : null
               }
+              inputReadOnly
             />
           </div>
         </Form.Item>
