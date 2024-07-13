@@ -48,16 +48,16 @@ const App: React.FC = () => {
         </div>
         <TaskForm visible={isModalVisible} onClose={handleClose} />
         <Tabs className="custom-tabs" defaultActiveKey="1">
-          <TabPane tab="Tasks" key="1">
+          <TabPane tab="Pending" key="1" className="tabContentWrapper">
             <TaskList />
           </TabPane>
-          <TabPane tab="Completed Tasks" key="2">
+          <TabPane tab="Completed" key="2" className="tabContentWrapper">
             <CompletedTasks />
           </TabPane>
-          <TabPane tab="Overdue Tasks" key="3">
+          <TabPane tab="Overdue" key="3" className="tabContentWrapper">
             <OverdueTasks />
           </TabPane>
-          <TabPane tab="Trash" key="4">
+          <TabPane tab="Trash" key="4" className="tabContentWrapper">
             <Trash />
           </TabPane>
         </Tabs>

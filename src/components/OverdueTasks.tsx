@@ -30,13 +30,23 @@ const OverdueTasks: React.FC = () => {
             style={{
               marginBottom: "16px",
               padding: "16px",
-              border: "1px solid #f0f0f0"
+              border: "1px solid #f0f0f0",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between"
             }}
           >
-            <h3>{task.title}</h3>
-            <p>{task.description}</p>
-            <p>{task.deadline}</p>
-            <Space className="buttonWrapper" style={{ marginTop: "16px" }}>
+            <div className="taskInfo" style={{ width: "100%" }}>
+              {task.deadline && (
+                <div className="deadline">• {task.deadline}</div>
+              )}
+              <h3 className="taskTitle">{task.title}</h3>
+              <p className="taskDescription">{task.description}</p>
+            </div>
+            <Space
+              className="buttonWrapper"
+              style={{ marginTop: "16px", width: "100%" }}
+            >
               <Button
                 type="default"
                 icon={<DeleteOutlined />}

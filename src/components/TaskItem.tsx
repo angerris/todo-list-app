@@ -7,7 +7,7 @@ import {
   markTaskAsPending
 } from "./../redux/slice/slice";
 import EditTaskForm from "./EditTaskForm";
-import { Card, Button, Space } from "antd";
+import { Card, Button } from "antd";
 import {
   EditOutlined,
   DeleteOutlined,
@@ -42,41 +42,39 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
   return (
     <Card
       className={`task-item ${task.status === "completed" ? "completed" : ""}`}
-      title={task.deadline}
-      style={{ marginBottom: "16px" }}
     >
       {isEditing ? (
         <EditTaskForm task={task} onClose={handleCloseEditForm} />
       ) : (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between"
-          }}
-        >
-          <h3>{task.title}</h3>
-          <p>{task.description}</p>
-          <Space className="buttonWrapper" style={{ marginTop: "16px" }}>
+        <>
+          <div className="taskInfo">
+            {task.deadline && <div className="deadline">• {task.deadline}</div>}
+            <div className="taskTitle">{task.title}</div>
+            <div className="taskDescription">{task.description}</div>
+          </div>
+          <div className="buttonWrapper">
             {task.status === "pending" && (
               <>
                 <Button
                   type="primary"
                   icon={<CheckOutlined />}
                   onClick={handleMarkAsCompleted}
-                  style={{ width: "100%", padding: "5px" }}
+                  style={{ marginRight: "8px", padding: "5px" }}
                 />
                 <Button
                   icon={<EditOutlined />}
                   onClick={handleEdit}
-                  style={{ width: "100%", color: "#1890ff", padding: "5px" }}
+                  style={{
+                    marginRight: "8px",
+                    color: "#1890ff",
+                    padding: "5px"
+                  }}
                 />
                 <Button
                   type="default"
                   icon={<DeleteOutlined />}
                   onClick={handleRemove}
-                  style={{ width: "100%", color: "#ff4d4f", padding: "5px" }}
+                  style={{ color: "#ff4d4f", padding: "5px" }}
                 />
               </>
             )}
@@ -86,18 +84,18 @@ const TaskItem: React.FC<{ task: Task }> = ({ task }) => {
                   type="primary"
                   icon={<UndoOutlined />}
                   onClick={handleMarkAsPending}
-                  style={{ width: "100%", padding: "5px" }}
+                  style={{ marginRight: "8px", padding: "5px" }}
                 />
                 <Button
                   type="default"
                   icon={<DeleteOutlined />}
                   onClick={handleRemove}
-                  style={{ width: "100%", color: "#ff4d4f", padding: "5px" }}
+                  style={{ color: "#ff4d4f", padding: "5px" }}
                 />
               </>
             )}
-          </Space>
-        </div>
+          </div>
+        </>
       )}
     </Card>
   );

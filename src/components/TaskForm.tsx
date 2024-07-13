@@ -31,7 +31,7 @@ const TaskForm: React.FC<{ visible: boolean; onClose: () => void }> = ({
     }),
     onSubmit: (values) => {
       const formattedDeadline = values.deadline
-        ? moment(values.deadline).format("YYYY-MM-DD HH:mm")
+        ? moment(values.deadline).format("YYYY-MM-DD, HH:mm")
         : undefined;
 
       dispatch(
