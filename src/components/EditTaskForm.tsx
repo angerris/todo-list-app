@@ -26,7 +26,7 @@ const EditTaskForm: React.FC<{ task: Task; onClose: () => void }> = ({
     }),
     onSubmit: (values) => {
       const formattedDeadline = values.deadline
-        ? moment(values.deadline).format("YYYY-MM-DD")
+        ? moment(values.deadline).format("YYYY-MM-DD HH:mm")
         : undefined;
 
       dispatch(editTask({ ...task, ...values, deadline: formattedDeadline }));
@@ -77,16 +77,22 @@ const EditTaskForm: React.FC<{ task: Task; onClose: () => void }> = ({
               : ""
           }
         >
-          <DatePicker
-            id="deadline"
-            name="deadline"
-            onChange={(date) => {
-              formik.setFieldValue("deadline", date);
-            }}
-            value={formik.values.deadline}
-            format="YYYY-MM-DD"
-            inputReadOnly
-          />
+          <div
+            style={{ width: "100%", overflow: "hidden", textAlign: "center" }}
+          >
+            <DatePicker
+              id="deadline"
+              name="deadline"
+              onChange={(date) => {
+                formik.setFieldValue("deadline", date);
+              }}
+              value={formik.values.deadline}
+              showTime
+              format="YYYY-MM-DD HH:mm"
+              style={{ width: "100%" }}
+              inputReadOnly
+            />
+          </div>
         </Form.Item>
 
         <Form.Item>

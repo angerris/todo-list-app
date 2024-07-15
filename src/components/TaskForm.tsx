@@ -111,9 +111,11 @@ const TaskForm: React.FC<{ visible: boolean; onClose: () => void }> = ({
           </div>
         </Form.Item>
 
-        <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
-          Add Task
-        </Button>
+        <div style={{ textAlign: "right", marginTop: "16px" }}>
+          <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
+            Add Task
+          </Button>
+        </div>
       </Form>
     </Modal>
   );
